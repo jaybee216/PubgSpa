@@ -1,5 +1,5 @@
 export class Weapon {
-    id: number;
+    weaponId: number;
     name: string;
     ammoType: string;
     class: string;

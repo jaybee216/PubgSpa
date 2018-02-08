@@ -3,11 +3,11 @@
   <!--<li *ngFor="let weapon of weapons"
       [class.selected]="weapon === selectedWeapon"
       (click)="onSelect(weapon)">
-    <span class="badge">{{weapon.id}}</span> {{weapon.name}}
+    <span class="badge">{{weapon.weaponId}}</span> {{weapon.name}}
   </li>-->
   <li *ngFor="let weapon of weapons">
-    <a routerLink="/detail/{{weapon.id}}">
-      <span class="badge">{{weapon.id}}</span> {{weapon.name}}
+    <a routerLink="/detail/{{weapon.weaponId}}">
+      <span class="badge">{{weapon.weaponId}}</span> {{weapon.name}}
     </a>
   </li>
 </ul>

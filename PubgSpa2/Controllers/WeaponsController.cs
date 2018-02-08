@@ -50,5 +50,33 @@ namespace PubgSpa2.Controllers
 
             return Ok(weaponsDto);
         }
+
+    [HttpGet]
+    [Route("{id}")]
+    [ProducesResponseType(typeof(DTO.WeaponDetails), 200)]
+    public async Task<IActionResult> Weapon(long id)
+    {
+      var weapon = await _context.Weapon
+          .Include(w => w.WeaponType)
+          .Include(w => w.AmmoType)
+          .FirstOrDefaultAsync(w => w.WeaponId == id);
+      
+      var weaponDto = new DTO.WeaponDetails
+      {
+        AmmoType = weapon.AmmoType.Name,
+        AmmoTypeId = weapon.AmmoTypeId,
+        BaseDamage = weapon.BaseDamage,
+        Capacity = weapon.Capacity,
+        CapacityExtended = weapon.CapacityExtended,
+        FireRate = weapon.FireRate,
+        Name = weapon.Name,
+        Range = weapon.Range,
+        WeaponId = weapon.WeaponId,
+        WeaponType = weapon.WeaponType.Name,
+        WeaponTypeId = weapon.WeaponTypeId
+      };
+
+      return Ok(weaponDto);
     }
+  }
 }
