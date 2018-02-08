@@ -1,0 +1,13 @@
+<div *ngIf="weapon">
+  <h2>{{weapon.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{weapon.id}}</div>
+  <div>
+    <label>
+      name:
+      <input [(ngModel)]="weapon.name" placeholder="name" />
+    </label>
+  </div>
+  <div><span>class: </span>{{weapon.class}}</div>
+  <div><span>ammo: </span>{{weapon.ammoType}}</div>
+  <div><span>base damage: </span>{{weapon.baseDamage}}</div>
+</div>
