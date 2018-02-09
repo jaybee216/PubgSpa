@@ -12,6 +12,7 @@ import { WeaponService } from '../weapon.service';
 export class WeaponDetailComponent implements OnInit, OnChanges {
   @Input() weapon: Weapon;
   @Input() bodyPart: string;
+  @Input() helmetModifier: number;
   @Input() armorModifier: number;
 
   damage: number;
@@ -31,10 +32,22 @@ export class WeaponDetailComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log('weapon-detail component: change detected:', changes.weapon.currentValue);
-    if (changes.weapon.currentValue) {
+    if (changes.weapon && changes.weapon.currentValue) {
+      console.log('weapon-detail component: weapon change detected:', changes.weapon.currentValue);
       this.calculateDamage();
       this.image = `../assets/${this.weapon.name}.png`;
+    }
+    if (changes.bodyPart && changes.bodyPart.currentValue) {
+      console.log('weapon-detail component: bodyPart change detected:', changes.bodyPart.currentValue);
+      this.calculateDamage();
+    }
+    if (changes.helmetModifier && changes.helmetModifier.currentValue) {
+      console.log('weapon-detail component: helmetModifier change detected:', changes.helmetModifier.currentValue);
+      this.calculateDamage();
+    }
+    if (changes.armorModifier && changes.armorModifier.currentValue) {
+      console.log('weapon-detail component: armorModifier change detected:', changes.armorModifier.currentValue);
+      this.calculateDamage();
     }
   }
 
@@ -47,17 +60,24 @@ export class WeaponDetailComponent implements OnInit, OnChanges {
   }
 
   calculateDamage(): void {
-    console.log('calculateDamage(): ', [this.bodyPart, this.armorModifier, this.weapon.baseDamage])
+    if (this.weapon) {
+      console.log('calculateDamage(): ', [this.bodyPart, this.helmetModifier, this.armorModifier, this.weapon.baseDamage])
 
-    var areaModifier : number = this.bodyPart === 'head' ? this.weapon.headModifier :
-      this.bodyPart === 'chest' ? this.weapon.chestModifier : this.weapon.limbModifier;
+      var areaModifier: number = this.bodyPart === 'head' ? this.weapon.headModifier :
+        this.bodyPart === 'chest' ? this.weapon.chestModifier : this.weapon.limbModifier;
+
+      var armorModifier = this.bodyPart === 'head' ? this.helmetModifier :
+        this.bodyPart === 'chest' ? this.armorModifier : 0.5 //approx. limb modifier;
+
+      console.log('areaModifier, armorModifier: ', areaModifier, armorModifier);
 
       this.damage = this.weapon.baseDamage *
         areaModifier *
-      this.armorModifier;
+        armorModifier;
 
       this.hitsToKill = Math.ceil(100 / this.damage);
 
       this.timeToKill = this.hitsToKill * this.weapon.fireRate;
+    }
   }
 }

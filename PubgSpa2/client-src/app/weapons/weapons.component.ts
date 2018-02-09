@@ -9,6 +9,8 @@ import { WeaponClass } from '../weapon-class';
   styleUrls: ['./weapons.component.css']
 })
 export class WeaponsComponent implements OnInit, OnChanges {
+  //TODO: rename to CalculatorComponent, factor WeaponsList into its own component
+
   //@Input() weaponClass: WeaponClass;
   @Input() weaponClassId: number;
   //private _weaponClassId: number;
@@ -30,6 +32,8 @@ export class WeaponsComponent implements OnInit, OnChanges {
 
   selectedBodyPart: string;
 
+  selectedHelmetModifier: number;
+
   selectedArmorModifier: number;
 
   weapons: Weapon[];
@@ -39,8 +43,9 @@ export class WeaponsComponent implements OnInit, OnChanges {
   ngOnInit() {
     console.log('onInit()');
     this.getWeapons();
-    //this.selectedBodyPart = 'chest';
-    //this.selectedArmorModifier = 0.4;
+    this.selectedBodyPart = 'head';
+    this.selectedHelmetModifier = 1;
+    this.selectedArmorModifier = 1;
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -64,9 +69,19 @@ export class WeaponsComponent implements OnInit, OnChanges {
       .subscribe(weapons => this.weapons = weapons);
   }
 
-  onSelect(weapon: Weapon): void {
+  onSelectWeapon(weapon: Weapon): void {
     this.selectedWeapon = weapon;
-    this.selectedBodyPart = 'chest';
-    this.selectedArmorModifier = 0.4;
+  }
+
+  onSelectBodyPart(bodyPart: string): void {
+    this.selectedBodyPart = bodyPart;
+  }
+
+  onSelectHelmet(modifier: number): void {
+    this.selectedHelmetModifier = modifier;
+  }
+
+  onSelectArmor(modifier: number): void {
+    this.selectedArmorModifier = modifier;
   }
 }

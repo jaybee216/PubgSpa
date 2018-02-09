@@ -3,7 +3,7 @@
   <li *ngFor="let weapon of weapons"
       [ngStyle]="{ 'background-image': 'url(../assets/' + weapon.name + '.png)'}"
       [class.selected]="weapon === selectedWeapon"
-      (click)="onSelect(weapon)">
+      (click)="onSelectWeapon(weapon)">
     <span class="badge">{{weapon.weaponId}}</span> {{weapon.name}}
   </li>
   <!--<li *ngFor="let weapon of weapons">
@@ -12,4 +12,58 @@
     </a>
   </li>-->
 </ul>
-<app-weapon-detail [weapon]="selectedWeapon" [bodyPart]="selectedBodyPart" [armorModifier]="selectedArmorModifier"></app-weapon-detail>
+
+<ul class="bodyParts">
+  <li [class.selected]="selectedBodyPart === 'head'"
+      (click)="onSelectBodyPart('head')">
+    Head
+  </li>
+  <li [class.selected]="selectedBodyPart === 'chest'"
+      (click)="onSelectBodyPart('chest')">
+    Chest
+  </li>
+  <li [class.selected]="selectedBodyPart === 'limb'"
+      (click)="onSelectBodyPart('limb')">
+    Limb
+  </li>
+</ul>
+
+<ul class="helmets">
+  <li [class.selected]="selectedHelmetModifier === 1"
+      (click)="onSelectHelmet(1)">
+    None
+  </li>
+  <li [class.selected]="selectedHelmetModifier === 0.7"
+      (click)="onSelectHelmet(0.7)">
+    Level 1
+  </li>
+  <li [class.selected]="selectedHelmetModifier === 0.6"
+      (click)="onSelectHelmet(0.6)">
+    Level 2
+  </li>
+  <li [class.selected]="selectedHelmetModifier === 0.45"
+      (click)="onSelectHelmet(0.45)">
+    Level 3
+  </li>
+</ul>
+
+<ul class="armor">
+  <li [class.selected]="selectedArmorModifier === 1"
+      (click)="onSelectArmor(1)">
+    None
+  </li>
+  <li [class.selected]="selectedArmorModifier === 0.7"
+      (click)="onSelectArmor(0.7)">
+    Level 1
+  </li>
+  <li [class.selected]="selectedArmorModifier === 0.6"
+      (click)="onSelectArmor(0.6)">
+    Level 2
+  </li>
+  <li [class.selected]="selectedArmorModifier === 0.45"
+      (click)="onSelectArmor(0.45)">
+    Level 3
+  </li>
+</ul>
+
+<app-weapon-detail [weapon]="selectedWeapon" [bodyPart]="selectedBodyPart" [helmetModifier]="selectedHelmetModifier" [armorModifier]="selectedArmorModifier"></app-weapon-detail>
