@@ -11,6 +11,8 @@ import { MessageService } from './message.service';
 import { AppRoutingModule } from './/app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
+import { WeaponClassesComponent } from './weapon-classes/weapon-classes.component';
+import { WeaponClassDetailComponent } from './weapon-class-detail/weapon-class-detail.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { HttpClientModule } from '@angular/common/http';
     WeaponsComponent,
     WeaponDetailComponent,
     MessagesComponent,
-    DashboardComponent
+    DashboardComponent,
+    WeaponClassesComponent,
+    WeaponClassDetailComponent
   ],
   imports: [
     BrowserModule,

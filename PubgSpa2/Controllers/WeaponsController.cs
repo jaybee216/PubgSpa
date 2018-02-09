@@ -8,48 +8,51 @@ using Microsoft.EntityFrameworkCore;
 
 namespace PubgSpa2.Controllers
 {
-    [Route("api/[controller]")]
-    public class WeaponsController : Controller
+  [Route("api/[controller]")]
+  public class WeaponsController : Controller
+  {
+    private readonly WeaponsContext _context;
+
+    public WeaponsController(WeaponsContext context)
     {
-        private readonly WeaponsContext _context;
+      _context = context;
+    }
 
-        public WeaponsController(WeaponsContext context)
-        {
-            _context = context;
-        }
+    [HttpGet]
+    [Route("")]
+    [ProducesResponseType(typeof(IEnumerable<DTO.WeaponDetails>), 200)]
+    public async Task<IActionResult> Weapons(int? weaponTypeId = null)
+    {
+      var weapons = _context.Weapon
+          .Include(w => w.WeaponType)
+          .Include(w => w.AmmoType)
+          .AsQueryable();
 
-        [HttpGet]
-        [Route("")]
-        [ProducesResponseType(typeof(IEnumerable<DTO.WeaponDetails>), 200)]
-        public async Task<IActionResult> Weapons(int? weaponTypeId = null)
-        {
-            var weapons = _context.Weapon
-                .Include(w => w.WeaponType)
-                .Include(w => w.AmmoType)
-                .AsQueryable();
+      if (weaponTypeId != null)
+      {
+        weapons = weapons.Where(w => w.WeaponTypeId == weaponTypeId);
+      }
 
-            if (weaponTypeId != null)
-            {
-                weapons = weapons.Where(w => w.WeaponTypeId == weaponTypeId);
-            }
+      var weaponsDto = await weapons.Select(w => new DTO.WeaponDetails
+      {
+        AmmoType = w.AmmoType.Name,
+        AmmoTypeId = w.AmmoTypeId,
+        BaseDamage = w.BaseDamage,
+        Capacity = w.Capacity,
+        CapacityExtended = w.CapacityExtended,
+        FireRate = w.FireRate,
+        Name = w.Name,
+        Range = w.Range,
+        WeaponId = w.WeaponId,
+        WeaponClass = w.WeaponType.Name,
+        WeaponClassId = w.WeaponTypeId,
+        ChestModifier = w.WeaponType.ChestModifier ?? 1,
+        HeadModifier = w.WeaponType.HeadModifier ?? 1,
+        LimbModifier = w.WeaponType.LimbModifier ?? 1
+      }).ToListAsync();
 
-            var weaponsDto = await weapons.Select(w => new DTO.WeaponDetails
-            {
-                AmmoType = w.AmmoType.Name,
-                AmmoTypeId = w.AmmoTypeId,
-                BaseDamage = w.BaseDamage,
-                Capacity = w.Capacity,
-                CapacityExtended = w.CapacityExtended,
-                FireRate = w.FireRate,
-                Name = w.Name,
-                Range = w.Range,
-                WeaponId = w.WeaponId,
-                WeaponType = w.WeaponType.Name,
-                WeaponTypeId = w.WeaponTypeId
-            }).ToListAsync();
-
-            return Ok(weaponsDto);
-        }
+      return Ok(weaponsDto);
+    }
 
     [HttpGet]
     [Route("{id}")]
@@ -60,7 +63,7 @@ namespace PubgSpa2.Controllers
           .Include(w => w.WeaponType)
           .Include(w => w.AmmoType)
           .FirstOrDefaultAsync(w => w.WeaponId == id);
-      
+
       var weaponDto = new DTO.WeaponDetails
       {
         AmmoType = weapon.AmmoType.Name,
@@ -72,8 +75,11 @@ namespace PubgSpa2.Controllers
         Name = weapon.Name,
         Range = weapon.Range,
         WeaponId = weapon.WeaponId,
-        WeaponType = weapon.WeaponType.Name,
-        WeaponTypeId = weapon.WeaponTypeId
+        WeaponClass = weapon.WeaponType.Name,
+        WeaponClassId = weapon.WeaponTypeId,
+        ChestModifier = weapon.WeaponType.ChestModifier ?? 1,
+        HeadModifier = weapon.WeaponType.HeadModifier ?? 1,
+        LimbModifier = weapon.WeaponType.LimbModifier ?? 1
       };
 
       return Ok(weaponDto);

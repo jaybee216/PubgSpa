@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Weapon } from './weapon';
-import { WEAPONS } from './mock-weapons';
+import { WeaponClass } from './weapon-class';
+//import { WEAPONS } from './mock-weapons';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
@@ -20,22 +21,48 @@ export class WeaponService {
   }
 
   private weaponsUrl = 'api/weapons';
+  private weaponClassesUrl = 'api/weaponClasses';
 
   getWeapons(): Observable<Weapon[]> {
     return this.http.get<Weapon[]>(this.weaponsUrl)
       .pipe(
-        tap(weapons => this.log('retrieved weapons')),
-        catchError(this.handleError('getWeapons', []))
+      tap(weapons => this.log('retrieved weapons')),
+      catchError(this.handleError('getWeapons', []))
+      );
+  }
+
+  getWeaponsByClass(weaponTypeId: number): Observable<Weapon[]> {
+    return this.http.get<Weapon[]>(`${this.weaponsUrl}?weaponTypeId=${weaponTypeId}`)
+      .pipe(
+      tap(weapons => this.log(`retrieved weapons for class id ${weaponTypeId}`)),
+      tap(weapons => console.log('retrieved weapons for class id', weaponTypeId)),
+      catchError(this.handleError('getWeapons', []))
       );
   }
 
   getWeapon(id: number): Observable<Weapon> {
-    
+
     const url = `${this.weaponsUrl}/${id}`;
     return this.http.get<Weapon>(url).pipe(
       tap(_ => this.log(`retrieved weapon id=${id}`)),
       catchError(this.handleError<Weapon>(`getWeapon id=${id}`))
     );
+  }
+
+  getWeaponClasses(): Observable<WeaponClass[]> {
+    return this.http.get<WeaponClass[]>(this.weaponClassesUrl)
+      .pipe(
+      tap(classes => this.log('retrieved weapon classes')),
+      catchError(this.handleError('getWeaponClasses', []))
+      );
+  }
+
+  getWeaponClass(id: number): Observable<WeaponClass> {
+    return this.http.get<WeaponClass>(`${this.weaponClassesUrl}/${id}`)
+      .pipe(
+      tap(c => this.log(`retrieved weapon class ${id}`)),
+      catchError(this.handleError<WeaponClass>(`getWeaponClass id=${id}`))
+      );
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

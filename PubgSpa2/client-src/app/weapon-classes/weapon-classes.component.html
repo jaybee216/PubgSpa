@@ -1,0 +1,10 @@
+<h2>Weapon Classes</h2>
+<ul class="weapon-classes">
+  <li *ngFor="let class of classes"
+      [class.selected]="class === selectedClass"
+      (click)="onSelect(class)">
+    <span class="badge">{{class.weaponClassId}}</span> {{class.name}}
+  </li>
+</ul>
+<app-weapon-class-detail [weaponClass]="selectedClass"></app-weapon-class-detail>
+<app-weapons [weaponClassId]="selectedClassId"></app-weapons>

@@ -1,13 +1,15 @@
 <h2>Weapons</h2>
 <ul class="weapons">
-  <!--<li *ngFor="let weapon of weapons"
+  <li *ngFor="let weapon of weapons"
+      [ngStyle]="{ 'background-image': 'url(../assets/' + weapon.name + '.png)'}"
       [class.selected]="weapon === selectedWeapon"
       (click)="onSelect(weapon)">
     <span class="badge">{{weapon.weaponId}}</span> {{weapon.name}}
-  </li>-->
-  <li *ngFor="let weapon of weapons">
+  </li>
+  <!--<li *ngFor="let weapon of weapons">
     <a routerLink="/detail/{{weapon.weaponId}}">
       <span class="badge">{{weapon.weaponId}}</span> {{weapon.name}}
     </a>
-  </li>
+  </li>-->
 </ul>
+<app-weapon-detail [weapon]="selectedWeapon" [bodyPart]="selectedBodyPart" [armorModifier]="selectedArmorModifier"></app-weapon-detail>

@@ -1,13 +1,21 @@
 <div *ngIf="weapon">
   <h2>{{weapon.name | uppercase}} Details</h2>
   <div><span>id: </span>{{weapon.weaponId}}</div>
-  <div>
+  <div [ngStyle]="{ 'background-image': 'url(' + image + ')'}">
     <label>
       name:
       <input [(ngModel)]="weapon.name" placeholder="name" />
     </label>
   </div>
-  <div><span>class: </span>{{weapon.class}}</div>
-  <div><span>ammo: </span>{{weapon.ammoType}}</div>
-  <div><span>base damage: </span>{{weapon.baseDamage}}</div>
+  <div><span>Class: </span>{{weapon.weaponClass}}</div>
+  <div><span>Ammo: </span>{{weapon.ammoType}}</div>
+  <div><span>Magazine Capacity: </span>{{weapon.capacity}}</div>
+  <div><span>Base Damage: </span>{{weapon.baseDamage}}</div>
+  <div><span>Rate of Fire: </span>{{weapon.fireRate}}</div>
+  <div><span>Range: </span>{{weapon.range}}</div>
+  <div *ngIf="damage">
+    <h3>Damage per hit: {{damage | number:'1.2-2'}}</h3>
+    <h3>Hits to kill: {{hitsToKill}}</h3>
+    <h3>Time to kill: {{timeToKill | number:'1.2-2'}}</h3>
+  </div>
 </div>
