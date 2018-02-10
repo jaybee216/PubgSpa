@@ -1,0 +1,48 @@
+<div>
+  <ul class="helmets">
+    <li [class.selected]="selectedHelmetModifier === 1"
+        [ngStyle]="{ 'background-image': 'url(../assets/Helmet_1.png)'}"
+        (click)="onSelectHelmet(1)">
+      None
+    </li>
+    <li [class.selected]="selectedHelmetModifier === 0.7"
+        [ngStyle]="{ 'background-image': 'url(../assets/Helmet_1.png)'}"
+        (click)="onSelectHelmet(0.7)">
+      Level 1
+    </li>
+    <li [class.selected]="selectedHelmetModifier === 0.6"
+        [ngStyle]="{ 'background-image': 'url(../assets/Helmet_2.png)'}"
+        (click)="onSelectHelmet(0.6)">
+      Level 2
+    </li>
+    <li [class.selected]="selectedHelmetModifier === 0.45"
+        [ngStyle]="{ 'background-image': 'url(../assets/Helmet_3.png)'}"
+        (click)="onSelectHelmet(0.45)">
+      Level 3
+    </li>
+  </ul>
+</div>
+<div>
+  <ul class="armor">
+    <li [class.selected]="selectedArmorModifier === 1"
+    [ngStyle]="{ 'background-image': 'url(../assets/Armor_1.png)'}"
+    (click)="onSelectArmor(1)">
+    None
+    </li>
+    <li [class.selected]="selectedArmorModifier === 0.7"
+        [ngStyle]="{ 'background-image': 'url(../assets/Armor_1.png)'}"
+        (click)="onSelectArmor(0.7)">
+      Level 1
+    </li>
+    <li [class.selected]="selectedArmorModifier === 0.6"
+        [ngStyle]="{ 'background-image': 'url(../assets/Armor_2.png)'}"
+        (click)="onSelectArmor(0.6)">
+      Level 2
+    </li>
+    <li [class.selected]="selectedArmorModifier === 0.45"
+        [ngStyle]="{ 'background-image': 'url(../assets/Armor_3.png)'}"
+        (click)="onSelectArmor(0.45)">
+      Level 3
+    </li>
+  </ul>
+</div>

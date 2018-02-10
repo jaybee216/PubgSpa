@@ -49,4 +49,8 @@
     <Exec Command="ng build --aot" />
   </Target>
 
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="ng build" />
+  </Target>
+
 </Project>

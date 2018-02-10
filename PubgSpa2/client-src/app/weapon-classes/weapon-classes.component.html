@@ -1,11 +1,14 @@
 <h2>Weapon Classes</h2>
-<ul class="weapon-classes">
-  <li *ngFor="let class of classes"
-      [ngStyle]="{ 'background-image': 'url(../assets/' + class.imageName + '.png)'}"
-      [class.selected]="class === selectedClass"
-      (click)="onSelect(class)">
-    <span class="badge">{{class.weaponClassId}}</span> {{class.name}}
-  </li>
-</ul>
+<div>
+  <ul class="weapon-classes">
+    <li *ngFor="let class of classes"
+        [ngStyle]="{ 'background-image': 'url(../assets/' + class.imageName + '.png)'}"
+        [class.selected]="class === selectedClass"
+        (click)="onSelect(class)">
+      <span class="badge">{{class.weaponClassId}}</span> {{class.name}}
+    </li>
+  </ul>
+</div>
 <app-weapon-class-detail [weaponClass]="selectedClass"></app-weapon-class-detail>
-<app-weapons [weaponClassId]="selectedClassId"></app-weapons>
+<app-weapons [weaponClassId]="selectedClassId"
+             (onWeaponSelected)="onWeaponSelected($event)"></app-weapons>

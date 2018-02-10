@@ -16,10 +16,6 @@ export class WeaponService {
     private messageService: MessageService
   ) { }
 
-  private log(message: string) {
-    this.messageService.add('WeaponService: ' + message);
-  }
-
   private weaponsUrl = 'api/weapons';
   private weaponClassesUrl = 'api/weaponClasses';
 
@@ -35,7 +31,6 @@ export class WeaponService {
     return this.http.get<Weapon[]>(`${this.weaponsUrl}?weaponTypeId=${weaponTypeId}`)
       .pipe(
       tap(weapons => this.log(`retrieved weapons for class id ${weaponTypeId}`)),
-      tap(weapons => console.log('retrieved weapons for class id', weaponTypeId)),
       catchError(this.handleError('getWeapons', []))
       );
   }
@@ -63,6 +58,10 @@ export class WeaponService {
       tap(c => this.log(`retrieved weapon class ${id}`)),
       catchError(this.handleError<WeaponClass>(`getWeaponClass id=${id}`))
       );
+  }
+
+  private log(message: string) {
+    this.messageService.log('WeaponService: ' + message);
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
