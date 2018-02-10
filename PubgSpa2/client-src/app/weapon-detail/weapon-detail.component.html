@@ -1,7 +1,7 @@
 <div *ngIf="weapon">
   <h2>{{weapon.name | uppercase}} Details</h2>
   <div><span>id: </span>{{weapon.weaponId}}</div>
-  <div [ngStyle]="{ 'background-image': 'url(' + image + ')'}">
+  <div [ngStyle]="{ 'background-image': 'url(../assets/' + weapon.cleanName + '.png)'}">
     <label>
       name:
       <input [(ngModel)]="weapon.name" placeholder="name" />
@@ -10,8 +10,9 @@
   <div><span>Class: </span>{{weapon.weaponClass}}</div>
   <div><span>Ammo: </span>{{weapon.ammoType}}</div>
   <div><span>Magazine Capacity: </span>{{weapon.capacity}}</div>
+  <div><span>Extended Capacity: </span>{{weapon.capacityExtended}}</div>
   <div><span>Base Damage: </span>{{weapon.baseDamage}}</div>
-  <div><span>Rate of Fire: </span>{{weapon.fireRate}}</div>
+  <div><span>Rate of Fire: </span>{{(1 / weapon.fireRate) | number: '1.2-2'}} RPS</div>
   <div><span>Range: </span>{{weapon.range}}</div>
   <div *ngIf="damage">
     <h3>Damage per hit: {{damage | number:'1.2-2'}}</h3>

@@ -24,12 +24,15 @@ namespace PubgSpa2.Controllers
     public async Task<IActionResult> WeaponClasses()
     {
       var classes = _context.WeaponType
+        .Include(w => w.Weapon)
+        .Where(w => w.Name != "Melee")
       .AsQueryable();
 
       var classesDto = await classes.Select(c => new DTO.WeaponClass
       {
         WeaponClassId = c.WeaponTypeId,
         Name = c.Name,
+        ImageName = c.Weapon.FirstOrDefault().Name.Replace(" ", "_"),
         HeadModifier = c.HeadModifier ?? 1,
         ChestModifier = c.ChestModifier ?? 1,
         LimbModifier = c.LimbModifier ?? 1

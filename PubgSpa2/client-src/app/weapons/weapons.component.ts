@@ -1,7 +1,9 @@
 import { Component, OnInit, Input, OnChanges, SimpleChange, SimpleChanges } from '@angular/core';
 import { Weapon } from '../weapon';
 import { WeaponService } from '../weapon.service';
+import { HitAreaService } from '../hit-area.service';
 import { WeaponClass } from '../weapon-class';
+import { HitArea } from '../hit-area';
 
 @Component({
   selector: 'app-weapons',
@@ -30,7 +32,7 @@ export class WeaponsComponent implements OnInit, OnChanges {
 
   selectedWeapon: Weapon;
 
-  selectedBodyPart: string;
+  selectedHitArea: HitArea;
 
   selectedHelmetModifier: number;
 
@@ -38,12 +40,14 @@ export class WeaponsComponent implements OnInit, OnChanges {
 
   weapons: Weapon[];
 
-  constructor(private weaponService: WeaponService) { }
+  constructor(private weaponService: WeaponService,
+              private hitAreaService: HitAreaService)
+  { }
 
   ngOnInit() {
     console.log('onInit()');
     this.getWeapons();
-    this.selectedBodyPart = 'head';
+    this.selectedHitArea = {name: 'head', hitModifier: 1, helmetProtected: true, armorProtected: false, isHead: true, isChest: false, isLimb: false };
     this.selectedHelmetModifier = 1;
     this.selectedArmorModifier = 1;
   }
@@ -73,8 +77,15 @@ export class WeaponsComponent implements OnInit, OnChanges {
     this.selectedWeapon = weapon;
   }
 
-  onSelectBodyPart(bodyPart: string): void {
-    this.selectedBodyPart = bodyPart;
+  onSelectHitArea(event, name: string): void {
+    console.log('onSelectHitArea:', event, name);
+    event.preventDefault();
+    this.getHitArea(name);
+  }
+
+  getHitArea(name: string): void {
+    this.hitAreaService.getHitArea(name)
+      .subscribe(area => this.selectedHitArea = area);
   }
 
   onSelectHelmet(modifier: number): void {

@@ -9,6 +9,7 @@ namespace PubgSpa2.DTO
   {
     public long WeaponClassId { get; set; }
     public string Name { get; set; }
+    public string ImageName { get; set; }
     public double HeadModifier { get; set; }
     public double ChestModifier { get; set; }
     public double LimbModifier { get; set; }

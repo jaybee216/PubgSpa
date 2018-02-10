@@ -21,5 +21,13 @@ namespace PubgSpa2.DTO
     public double HeadModifier { get; set; }
     public double ChestModifier { get; set; }
     public double LimbModifier { get; set; }
+
+    public string CleanName
+    {
+      get
+      {
+        return Name.Replace(" ", "_");
+      }
+    }
   }
 }

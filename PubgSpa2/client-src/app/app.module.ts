@@ -6,10 +6,11 @@ import { AppComponent } from './app.component';
 import { WeaponsComponent } from './weapons/weapons.component';
 import { WeaponDetailComponent } from './weapon-detail/weapon-detail.component';
 import { WeaponService } from './weapon.service';
+import { HitAreaService } from './hit-area.service';
 import { MessagesComponent } from './messages/messages.component';
 import { MessageService } from './message.service';
 import { AppRoutingModule } from './/app-routing.module';
-import { DashboardComponent } from './dashboard/dashboard.component';
+//import { DashboardComponent } from './dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { WeaponClassesComponent } from './weapon-classes/weapon-classes.component';
 import { WeaponClassDetailComponent } from './weapon-class-detail/weapon-class-detail.component';
@@ -20,7 +21,7 @@ import { WeaponClassDetailComponent } from './weapon-class-detail/weapon-class-d
     WeaponsComponent,
     WeaponDetailComponent,
     MessagesComponent,
-    DashboardComponent,
+    //DashboardComponent,
     WeaponClassesComponent,
     WeaponClassDetailComponent
   ],
@@ -32,6 +33,7 @@ import { WeaponClassDetailComponent } from './weapon-class-detail/weapon-class-d
   ],
   providers: [
     WeaponService,
+    HitAreaService,
     MessageService
   ],
   bootstrap: [AppComponent]

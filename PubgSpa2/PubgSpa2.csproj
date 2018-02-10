@@ -7,6 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="client-src\app\dashboard\**" />
+    <Content Remove="client-src\app\dashboard\**" />
+    <EmbeddedResource Remove="client-src\app\dashboard\**" />
+    <None Remove="client-src\app\dashboard\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="client-src\app\hit-area.ts" />
+    <None Remove="client-src\app\mock-hit-areas.ts" />
     <None Remove="client-src\app\mock-weapons.ts" />
     <None Remove="client-src\app\weapon-class.ts" />
     <None Remove="client-src\app\weapon.ts" />
@@ -23,6 +32,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="client-src\app\hit-area.ts" />
+    <TypeScriptCompile Include="client-src\app\mock-hit-areas.ts" />
     <TypeScriptCompile Include="client-src\app\mock-weapons.ts" />
     <TypeScriptCompile Include="client-src\app\weapon-class.ts" />
     <TypeScriptCompile Include="client-src\app\weapon.ts" />

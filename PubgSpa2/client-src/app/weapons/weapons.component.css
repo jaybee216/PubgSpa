@@ -1,4 +1,9 @@
 /* weaponsComponent's private CSS styles */
+.selected {
+  background-color: #CFD8DC !important;
+  color: white;
+}
+
 .weapons {
   margin: 0 0 2em 0;
   list-style-type: none;
@@ -62,3 +67,97 @@
     margin-right: .8em;
     border-radius: 4px 0 0 4px;
   }
+
+.helmets {
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  padding: 0;
+  width: 150em;
+}
+
+  .helmets li {
+    /*position: relative;
+    cursor: pointer;
+    background-color: #EEE;
+    margin: .5em;
+    padding: .3em 0;
+    height: 1.6em;
+    border-radius: 4px;*/
+    float: left;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 96px;
+    width: 96px;
+    padding: 2px;
+    margin: 2px;
+    border: 1px solid #888;
+    text-align: right;
+    text-shadow: -1px 0 2px #fff, 1px 0 2px #fff, 0 -1px 2px #fff, 0 1px 2px #fff;
+    position: relative;
+    cursor: pointer;
+  }
+
+    .helmets li:hover {
+      color: #607D8B;
+      background-color: #DDD;
+      left: .1em;
+    }
+
+  .helmets a {
+    color: #888;
+    text-decoration: none;
+    position: relative;
+    display: block;
+    width: 250px;
+  }
+
+    .helmets a:hover {
+      color: #607D8B;
+    }
+
+.armor {
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  padding: 0;
+  width: 150em;
+}
+
+  .armor li {
+    /*position: relative;
+    cursor: pointer;
+    background-color: #EEE;
+    margin: .5em;
+    padding: .3em 0;
+    height: 1.6em;
+    border-radius: 4px;*/
+    float: left;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 96px;
+    width: 96px;
+    padding: 2px;
+    margin: 2px;
+    border: 1px solid #888;
+    text-align: right;
+    text-shadow: -1px 0 2px #fff, 1px 0 2px #fff, 0 -1px 2px #fff, 0 1px 2px #fff;
+    position: relative;
+    cursor: pointer;
+  }
+
+    .armor li:hover {
+      color: #607D8B;
+      background-color: #DDD;
+      left: .1em;
+    }
+
+  .armor a {
+    color: #888;
+    text-decoration: none;
+    position: relative;
+    display: block;
+    width: 250px;
+  }
+
+    .armor a:hover {
+      color: #607D8B;
+    }

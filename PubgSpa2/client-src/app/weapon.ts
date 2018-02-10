@@ -1,6 +1,7 @@
 export class Weapon {
   weaponId: number;
   name: string;
+  cleanName: string;
   ammoType: string;
   weaponClassId: number;
   ammoTypeId: number;
