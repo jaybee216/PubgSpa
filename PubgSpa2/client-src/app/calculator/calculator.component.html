@@ -3,7 +3,7 @@
 <app-armor-selection (onArmorSelected)="onArmorSelected($event)"
                      (onHelmetSelected)="onHelmetSelected($event)"></app-armor-selection>
 
-<app-weapon-classes (onWeaponSelectedByChild)="onWeaponSelected($event)"></app-weapon-classes>
+<app-weapon-classes></app-weapon-classes>
 
 <div *ngIf="damage">
   <h3>Damage per hit: {{damage | number:'1.2-2'}}</h3>

@@ -16,6 +16,7 @@ import { WeaponClassDetailComponent } from './weapon-class-detail/weapon-class-d
 import { CalculatorComponent } from './calculator/calculator.component';
 import { ArmorSelectionComponent } from './armor-selection/armor-selection.component';
 import { HitAreaSelectionComponent } from './hit-area-selection/hit-area-selection.component';
+import { WeaponSelectionService } from './weapon-selection.service';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { HitAreaSelectionComponent } from './hit-area-selection/hit-area-selecti
   providers: [
     WeaponService,
     HitAreaService,
-    MessageService
+    MessageService,
+    WeaponSelectionService
   ],
   bootstrap: [AppComponent]
 })

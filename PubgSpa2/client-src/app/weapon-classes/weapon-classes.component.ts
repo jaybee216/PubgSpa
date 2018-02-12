@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { WeaponClass } from '../weapon-class';
 import { WeaponService } from '../weapon.service';
 import { Weapon } from '../weapon';
@@ -10,7 +10,6 @@ import { MessageService } from '../message.service';
   styleUrls: ['./weapon-classes.component.css']
 })
 export class WeaponClassesComponent implements OnInit {
-  @Output() onWeaponSelectedByChild = new EventEmitter<Weapon>();
 
   selectedClass: WeaponClass;
   selectedClassId: number;
@@ -33,11 +32,6 @@ export class WeaponClassesComponent implements OnInit {
     this.log(`onSelect: ${weaponClass.name}`);
     this.selectedClass = weaponClass;
     this.selectedClassId = weaponClass.weaponClassId;
-  }
-
-  onWeaponSelected(weapon: Weapon): void {
-    this.log(`onWeaponSelected: ${weapon.name}`);
-    this.onWeaponSelectedByChild.emit(weapon);
   }
 
   private log(message: string): void {

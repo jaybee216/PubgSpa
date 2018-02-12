@@ -1,12 +1,12 @@
 <div *ngIf="weapon">
   <h2>{{weapon.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{weapon.weaponId}}</div>
+  <!--<div><span>id: </span>{{weapon.weaponId}}</div>
   <div [ngStyle]="{ 'background-image': 'url(../assets/' + weapon.cleanName + '.png)'}">
     <label>
       name:
       <input [(ngModel)]="weapon.name" placeholder="name" />
     </label>
-  </div>
+  </div>-->
   <div><span>Class: </span>{{weapon.weaponClass}}</div>
   <div><span>Ammo: </span>{{weapon.ammoType}}</div>
   <div><span>Magazine Capacity: </span>{{weapon.capacity}}</div>

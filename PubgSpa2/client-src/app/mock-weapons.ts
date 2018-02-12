@@ -1,10 +1,18 @@
-//import { Weapon } from './weapon';
+import { Weapon } from './weapon';
+import { WeaponClass } from './weapon-class';
 
-//export const WEAPONS: Weapon[] = [
-//  { weaponId: 11, name: 'M16', ammoType: '5.56', class: 'AR', baseDamage: 44 },
-//  { weaponId: 12, name: 'M416', ammoType: '5.56', class: 'AR', baseDamage: 44 },
-//  { weaponId: 13, name: 'AKM', ammoType: '7.62', class: 'AR', baseDamage: 49 },
-//  { weaponId: 14, name: 'M24', ammoType: '7.62', class: 'SR', baseDamage: 80 },
-//  { weaponId: 15, name: 'UMP-9', ammoType: '9mm', class: 'SMG', baseDamage: 30 },
-//  { weaponId: 16, name: 'Groza', ammoType: '7.62', class: 'AR', baseDamage: 49 }
-//];
+export const WEAPONS: Weapon[] = [
+  {weaponId: 11, name: 'M16A4', ammoType: '5.56', weaponClass: 'AR', baseDamage: 44, capacity: 30, capacityExtended: 40, ammoTypeId: 1, chestModifier : 1, cleanName : 'M16A4', fireRate : 1, headModifier : 1, limbModifier : 1, range : 1, weaponClassId : 5},
+  { weaponId: 11, name: 'M16A4', ammoType: '5.56', weaponClass: 'AR', baseDamage: 44, capacity: 30, capacityExtended: 40, ammoTypeId: 1, chestModifier: 1, cleanName: 'M16A4', fireRate: 1, headModifier: 1, limbModifier: 1, range: 1, weaponClassId: 5 },
+  { weaponId: 11, name: 'M16A4', ammoType: '5.56', weaponClass: 'AR', baseDamage: 44, capacity: 30, capacityExtended: 40, ammoTypeId: 1, chestModifier: 1, cleanName: 'M16A4', fireRate: 1, headModifier: 1, limbModifier: 1, range: 1, weaponClassId: 5 },
+  { weaponId: 11, name: 'M16A4', ammoType: '5.56', weaponClass: 'AR', baseDamage: 44, capacity: 30, capacityExtended: 40, ammoTypeId: 1, chestModifier: 1, cleanName: 'M16A4', fireRate: 1, headModifier: 1, limbModifier: 1, range: 1, weaponClassId: 5 },
+  { weaponId: 11, name: 'M16A4', ammoType: '5.56', weaponClass: 'AR', baseDamage: 44, capacity: 30, capacityExtended: 40, ammoTypeId: 1, chestModifier: 1, cleanName: 'M16A4', fireRate: 1, headModifier: 1, limbModifier: 1, range: 1, weaponClassId: 5 },
+  { weaponId: 11, name: 'M16A4', ammoType: '5.56', weaponClass: 'AR', baseDamage: 44, capacity: 30, capacityExtended: 40, ammoTypeId: 1, chestModifier: 1, cleanName: 'M16A4', fireRate: 1, headModifier: 1, limbModifier: 1, range: 1, weaponClassId: 5 }
+];
+
+export const WEAPONCLASSES: WeaponClass[] = [
+  { weaponClassId : 1, name : 'AR', imageName : 'M16A4', limbModifier : 1, headModifier : 2, chestModifier : 1.5 },
+  { weaponClassId: 1, name: 'SMG', imageName: 'M16A4', limbModifier: 1, headModifier: 2, chestModifier: 1.5 },
+  { weaponClassId: 1, name: 'Shotgun', imageName: 'M16A4', limbModifier: 1, headModifier: 2, chestModifier: 1.5 },
+  { weaponClassId: 1, name: 'Pistol', imageName: 'M16A4', limbModifier: 1, headModifier: 2, chestModifier: 1.5 }
+]

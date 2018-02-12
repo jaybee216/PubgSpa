@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Weapon } from '../weapon';
 import { HitArea } from '../hit-area';
 import { MessageService } from '../message.service';
+import { WeaponSelectionService } from '../weapon-selection.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-calculator',
@@ -9,6 +11,8 @@ import { MessageService } from '../message.service';
   styleUrls: ['./calculator.component.css']
 })
 export class CalculatorComponent implements OnInit {
+  subscription: Subscription;
+
   weapon: Weapon;
   hitArea: HitArea;
   helmetModifier: number;
@@ -18,11 +22,24 @@ export class CalculatorComponent implements OnInit {
   hitsToKill: number;
   timeToKill: number;
 
-  constructor(private messageService: MessageService) { }
+  constructor(private messageService: MessageService,
+              private weaponSelectionService: WeaponSelectionService) {
+    this.subscription = weaponSelectionService.weaponSelected$.subscribe(
+      weapon => {
+        this.log(`subscription received: ${weapon.name}`);
+        this.onWeaponSelected(weapon);
+      }
+    );
+  }
 
   ngOnInit() {
     this.helmetModifier = 1;
     this.armorModifier = 1;
+  }
+
+  ngOnDestroy() {
+    // prevent memory leak when component destroyed
+    this.subscription.unsubscribe();
   }
 
   onWeaponSelected(weapon: Weapon): void {

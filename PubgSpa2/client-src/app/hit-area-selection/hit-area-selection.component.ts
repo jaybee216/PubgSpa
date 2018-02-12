@@ -17,12 +17,14 @@ export class HitAreaSelectionComponent implements OnInit {
     private messageService: MessageService) { }
 
   ngOnInit() {
-    this.selectedHitArea = { name: 'head', hitModifier: 1, helmetProtected: true, armorProtected: false, isHead: true, isChest: false, isLimb: false };
+    this.onSelectHitArea(null, 'head');
   }
 
   onSelectHitArea(event, name: string): void {
     this.log(`onSelectHitArea: ${name}`);
-    event.preventDefault();
+    if (event) {
+      event.preventDefault();
+    }
     this.getHitArea(name);
     this.onHitAreaSelected.emit(this.selectedHitArea);
   }

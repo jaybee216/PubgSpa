@@ -30,21 +30,8 @@ export class WeaponDetailComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     if (changes.weapon && changes.weapon.currentValue) {
       this.log(`weapon change detected: ${changes.weapon.currentValue}`);
-      //this.calculateDamage();
       this.image = `../assets/${this.weapon.name}.png`;
     }
-    //if (changes.hitArea && changes.hitArea.currentValue) {
-    //  console.log('weapon-detail component: hitArea change detected:', changes.hitArea.currentValue);
-    //  this.calculateDamage();
-    //}
-    //if (changes.helmetModifier && changes.helmetModifier.currentValue) {
-    //  console.log('weapon-detail component: helmetModifier change detected:', changes.helmetModifier.currentValue);
-    //  this.calculateDamage();
-    //}
-    //if (changes.armorModifier && changes.armorModifier.currentValue) {
-    //  console.log('weapon-detail component: armorModifier change detected:', changes.armorModifier.currentValue);
-    //  this.calculateDamage();
-    //}
   }
 
   getWeapon(): void {

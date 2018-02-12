@@ -1,4 +1,4 @@
-<h2>Weapons</h2>
+<h2>Weapon: <span *ngIf="selectedWeapon">{{selectedWeapon.name}}</span></h2>
 <div>
   <ul class="weapons">
     <li *ngFor="let weapon of weapons"

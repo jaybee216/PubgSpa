@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Weapon } from './weapon';
 import { WeaponClass } from './weapon-class';
-//import { WEAPONS } from './mock-weapons';
+import { WEAPONS, WEAPONCLASSES } from './mock-weapons';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
@@ -20,6 +20,7 @@ export class WeaponService {
   private weaponClassesUrl = 'api/weaponClasses';
 
   getWeapons(): Observable<Weapon[]> {
+    //return of(WEAPONS);
     return this.http.get<Weapon[]>(this.weaponsUrl)
       .pipe(
       tap(weapons => this.log('retrieved weapons')),
@@ -28,6 +29,7 @@ export class WeaponService {
   }
 
   getWeaponsByClass(weaponTypeId: number): Observable<Weapon[]> {
+    //return of(WEAPONS);
     return this.http.get<Weapon[]>(`${this.weaponsUrl}?weaponTypeId=${weaponTypeId}`)
       .pipe(
       tap(weapons => this.log(`retrieved weapons for class id ${weaponTypeId}`)),
@@ -36,7 +38,7 @@ export class WeaponService {
   }
 
   getWeapon(id: number): Observable<Weapon> {
-
+    //return of(WEAPONS.find(w => w.name === 'M16A4'));
     const url = `${this.weaponsUrl}/${id}`;
     return this.http.get<Weapon>(url).pipe(
       tap(_ => this.log(`retrieved weapon id=${id}`)),
@@ -45,6 +47,7 @@ export class WeaponService {
   }
 
   getWeaponClasses(): Observable<WeaponClass[]> {
+    //return of(WEAPONCLASSES);
     return this.http.get<WeaponClass[]>(this.weaponClassesUrl)
       .pipe(
       tap(classes => this.log('retrieved weapon classes')),
@@ -53,6 +56,7 @@ export class WeaponService {
   }
 
   getWeaponClass(id: number): Observable<WeaponClass> {
+    //return of(WEAPONCLASSES.find(c => c.name === 'AR'));
     return this.http.get<WeaponClass>(`${this.weaponClassesUrl}/${id}`)
       .pipe(
       tap(c => this.log(`retrieved weapon class ${id}`)),

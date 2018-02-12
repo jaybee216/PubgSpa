@@ -1,0 +1,13 @@
+map area {
+  outline:none;
+}
+
+img {
+  width: 526px;
+  height: 1085px;
+}
+
+.selected {
+  background-color: #CFD8DC !important;
+  color: white;
+}

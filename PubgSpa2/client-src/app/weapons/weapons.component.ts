@@ -1,9 +1,8 @@
-import { Component, OnInit, Input, Output, OnChanges, SimpleChange, SimpleChanges, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Weapon } from '../weapon';
 import { WeaponService } from '../weapon.service';
 import { MessageService } from '../message.service';
-import { WeaponClass } from '../weapon-class';
-import { HitArea } from '../hit-area';
+import { WeaponSelectionService } from '../weapon-selection.service';
 
 @Component({
   selector: 'app-weapons',
@@ -12,14 +11,14 @@ import { HitArea } from '../hit-area';
 })
 export class WeaponsComponent implements OnInit, OnChanges {
   @Input() weaponClassId: number;
-  @Output() onWeaponSelected = new EventEmitter<Weapon>();
 
   selectedWeapon: Weapon;
   
   weapons: Weapon[];
 
   constructor(private weaponService: WeaponService,
-              private messageService: MessageService)
+    private messageService: MessageService,
+  private weaponSelectionService: WeaponSelectionService)
   { }
 
   ngOnInit() {
@@ -51,7 +50,7 @@ export class WeaponsComponent implements OnInit, OnChanges {
   onSelectWeapon(weapon: Weapon): void {
     this.log(`onSelectWeapon: ${weapon.name}`);
     this.selectedWeapon = weapon;
-    this.onWeaponSelected.emit(weapon);
+    this.weaponSelectionService.selectWeapon(this.selectedWeapon);
   }
 
   private log(message: string): void {
