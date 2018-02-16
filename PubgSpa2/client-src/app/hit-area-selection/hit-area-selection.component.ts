@@ -17,7 +17,7 @@ export class HitAreaSelectionComponent implements OnInit {
     private messageService: MessageService) { }
 
   ngOnInit() {
-    this.onSelectHitArea(null, 'head');
+    this.onSelectHitArea(null, 'Head');
   }
 
   onSelectHitArea(event, name: string): void {

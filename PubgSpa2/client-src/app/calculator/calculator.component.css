@@ -1,10 +1,24 @@
+:host {
+  font-family: 'Arial', SimSun, sans-serif, 'Apple SD Gothic Neo';
+}
+
 app-hit-area-selection {
   float: left;
   height: 1500px;
 }
 
-app-armor-selection {
+app-weapon-class-detail {
+  float: left;
+  width: 300px;
+  padding-right: 50px;
 }
 
-app-weapon-classes {
+app-weapon-detail {
+  float: left;
+  width: 250px;
+  padding-right: 50px;
+}
+
+.damage {
+  float: left;
 }

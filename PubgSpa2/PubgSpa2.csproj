@@ -14,7 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="client-src\app\armor.ts" />
     <None Remove="client-src\app\hit-area.ts" />
+    <None Remove="client-src\app\mock-armors.ts" />
     <None Remove="client-src\app\mock-hit-areas.ts" />
     <None Remove="client-src\app\mock-weapons.ts" />
     <None Remove="client-src\app\weapon-class.ts" />
@@ -33,8 +35,10 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="client-src\app\hit-area.ts" />
+    <TypeScriptCompile Include="client-src\app\mock-armors.ts" />
     <TypeScriptCompile Include="client-src\app\mock-hit-areas.ts" />
     <TypeScriptCompile Include="client-src\app\mock-weapons.ts" />
+    <TypeScriptCompile Include="client-src\app\armor.ts" />
     <TypeScriptCompile Include="client-src\app\weapon-class.ts" />
     <TypeScriptCompile Include="client-src\app\weapon.ts" />
   </ItemGroup>

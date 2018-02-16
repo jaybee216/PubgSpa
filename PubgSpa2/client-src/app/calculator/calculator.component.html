@@ -3,10 +3,15 @@
 <app-armor-selection (onArmorSelected)="onArmorSelected($event)"
                      (onHelmetSelected)="onHelmetSelected($event)"></app-armor-selection>
 
-<app-weapon-classes></app-weapon-classes>
+<app-weapon-classes (onWeaponClassSelected)="onWeaponClassSelected($event)"></app-weapon-classes>
 
-<div *ngIf="damage">
+<app-weapon-class-detail [weaponClass]="weaponClass"></app-weapon-class-detail>
+
+<app-weapon-detail [weapon]="weapon"></app-weapon-detail>
+
+<div class="damage" *ngIf="damage">
+  <h2>Damage Stats ({{hitArea.name}})</h2>
   <h3>Damage per hit: {{damage | number:'1.2-2'}}</h3>
   <h3>Hits to kill: {{hitsToKill}}</h3>
-  <h3>Time to kill: {{timeToKill | number:'1.2-2'}}</h3>
+  <h3>Time to kill: {{timeToKill | number:'1.2-2'}} sec</h3>
 </div>

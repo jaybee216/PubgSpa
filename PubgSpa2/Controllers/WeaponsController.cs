@@ -49,7 +49,9 @@ namespace PubgSpa2.Controllers
         ChestModifier = w.WeaponType.ChestModifier ?? 1,
         HeadModifier = w.WeaponType.HeadModifier ?? 1,
         LimbModifier = w.WeaponType.LimbModifier ?? 1
-      }).ToListAsync();
+      })
+      .OrderBy(w => w.WeaponClassId).ThenBy(w => w.Name)
+      .ToListAsync();
 
       return Ok(weaponsDto);
     }

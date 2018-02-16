@@ -13,13 +13,12 @@ export class WeaponsComponent implements OnInit, OnChanges {
   @Input() weaponClassId: number;
 
   selectedWeapon: Weapon;
-  
+
   weapons: Weapon[];
 
   constructor(private weaponService: WeaponService,
     private messageService: MessageService,
-  private weaponSelectionService: WeaponSelectionService)
-  { }
+    private weaponSelectionService: WeaponSelectionService) { }
 
   ngOnInit() {
     this.log('onInit()');
@@ -27,11 +26,15 @@ export class WeaponsComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    this.log(`change detected: , ${changes.weaponClassId.currentValue}`);
-    if (changes.weaponClassId.currentValue) {
-      this.selectedWeapon = null;
-      this.weapons = [];
-      this.getWeaponsByClass(changes.weaponClassId.currentValue);
+    this.log(`change detected: ${changes.weaponClassId.currentValue}`);
+    this.selectedWeapon = null;
+    this.weapons = [];
+    var weaponClassId = changes.weaponClassId.currentValue;
+    if (weaponClassId === 0) {
+      this.getWeapons();
+    }
+    else {
+      this.getWeaponsByClass(weaponClassId);
     }
   }
 

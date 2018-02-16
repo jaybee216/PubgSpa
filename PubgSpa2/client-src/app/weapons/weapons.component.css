@@ -1,11 +1,11 @@
 /* weaponsComponent's private CSS styles */
 .selected {
-  background-color: #CFD8DC !important;
+  background-color: #0368e54d !important;
   color: white;
 }
 
 .weapons {
-  height: 150px;
+  height: 240px;
   margin: 0 0 2em 0;
   list-style-type: none;
   padding: 0;
@@ -13,23 +13,17 @@
 }
 
   .weapons li {
-    /*position: relative;
-    cursor: pointer;
-    background-color: #EEE;
-    margin: .5em;
-    padding: .3em 0;
-    height: 1.6em;
-    border-radius: 4px;*/
     float: left;
-    background-size: contain;
+    border-radius: 50%;
+    background-position:50%;
+    background-size: 90%;
     background-repeat: no-repeat;
-    height: 96px;
-    width: 96px;
+    height: 110px;
+    width: 110px;
     padding: 2px;
     margin: 2px;
-    border: 1px solid #888;
-    text-align: right;
-    text-shadow: -1px 0 2px #fff, 1px 0 2px #fff, 0 -1px 2px #fff, 0 1px 2px #fff;
+    border: 3px solid #999;
+    text-align: center;
     position: relative;
     cursor: pointer;
   }

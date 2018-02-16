@@ -5,13 +5,8 @@
         [ngStyle]="{ 'background-image': 'url(../assets/' + weapon.cleanName + '.png)'}"
         [class.selected]="weapon === selectedWeapon"
         (click)="onSelectWeapon(weapon)">
-      <span class="badge">{{weapon.weaponId}}</span> {{weapon.name}}
+      {{weapon.name}}
     </li>
-    <!--<li *ngFor="let weapon of weapons">
-      <a routerLink="/detail/{{weapon.weaponId}}">
-        <span class="badge">{{weapon.weaponId}}</span> {{weapon.name}}
-      </a>
-    </li>-->
   </ul>
 </div>
-<app-weapon-detail [weapon]="selectedWeapon"></app-weapon-detail>
+

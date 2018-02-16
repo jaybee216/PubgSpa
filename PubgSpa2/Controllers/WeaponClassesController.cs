@@ -52,7 +52,10 @@ namespace PubgSpa2.Controllers
       var weaponClassDto = new DTO.WeaponClass
       {
         Name = weaponClass.Name,
-        WeaponClassId = weaponClass.WeaponTypeId
+        WeaponClassId = weaponClass.WeaponTypeId,
+        HeadModifier = weaponClass.HeadModifier ?? 1,
+        ChestModifier = weaponClass.ChestModifier ?? 1,
+        LimbModifier = weaponClass.LimbModifier ?? 1
       };
 
       return Ok(weaponClassDto);
