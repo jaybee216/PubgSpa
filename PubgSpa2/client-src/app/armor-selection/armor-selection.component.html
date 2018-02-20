@@ -1,4 +1,4 @@
-<div>
+<div class="helmets-container">
   <h2>Helmet: <span *ngIf="selectedHelmet">{{selectedHelmet.name}}</span></h2>
   <ul class="helmets">
     <li *ngFor="let helmet of helmets"
@@ -9,7 +9,7 @@
     </li>
   </ul>
 </div>
-<div>
+<div class="armor-container">
   <h2>Armor: <span *ngIf="selectedArmor">{{selectedArmor.name}}</span></h2>
   <ul class="armor">
     <li *ngFor="let armor of armors"

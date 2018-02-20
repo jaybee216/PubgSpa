@@ -6,6 +6,7 @@ import { of } from 'rxjs/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
 import { MessageService } from './message.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { WEAPONS, WEAPONCLASSES } from './mock-weapons';
 
 @Injectable()
 export class WeaponService {
@@ -22,6 +23,7 @@ export class WeaponService {
   weaponClasses: WeaponClass[];
 
   getWeapons(): Observable<Weapon[]> {
+    //return of(WEAPONS);
     if (!this.weapons) {
       return this.http.get<Weapon[]>(this.weaponsUrl)
         .pipe(
@@ -36,7 +38,7 @@ export class WeaponService {
   }
 
   getWeaponsByClass(weaponTypeId: number): Observable<Weapon[]> {
-    //return of(WEAPONS);
+    //return of(WEAPONS.filter(w => w.weaponClassId === weaponTypeId));
     if (!this.weapons) {
       return this.http.get<Weapon[]>(`${this.weaponsUrl}?weaponTypeId=${weaponTypeId}`)
         .pipe(
@@ -50,6 +52,7 @@ export class WeaponService {
   }
 
   getWeapon(id: number): Observable<Weapon> {
+    //return of(WEAPONS.find(w => w.weaponId === id));
     if (!this.weapons) {
       const url = `${this.weaponsUrl}/${id}`;
       return this.http.get<Weapon>(url).pipe(
@@ -63,6 +66,7 @@ export class WeaponService {
   }
 
   getWeaponClasses(): Observable<WeaponClass[]> {
+    //return of(WEAPONCLASSES);
     if (!this.weaponClasses) {
       return this.http.get<WeaponClass[]>(this.weaponClassesUrl)
         .pipe(
@@ -77,6 +81,7 @@ export class WeaponService {
   }
 
   getWeaponClass(id: number): Observable<WeaponClass> {
+    //return of(WEAPONCLASSES.find(wc => wc.weaponClassId === id));
     if (!this.weaponClasses) {
       return this.http.get<WeaponClass>(`${this.weaponClassesUrl}/${id}`)
         .pipe(

@@ -3,6 +3,11 @@
   color: white;
 }
 
+.helmets-container {
+  width:550px;
+  display:inline-block;
+}
+
 .helmets {
   height: 120px;
   margin: 0 0 2em 0;
@@ -44,6 +49,12 @@
     .helmets a:hover {
       color: #607D8B;
     }
+
+.armor-container {
+  width: 550px;
+  display: inline-block;
+}
+
 
 .armor {
   height: 120px;

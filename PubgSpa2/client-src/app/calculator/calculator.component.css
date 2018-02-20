@@ -22,3 +22,9 @@ app-weapon-detail {
 .damage {
   float: left;
 }
+
+.subtitle {
+  vertical-align: middle;
+  font-weight: 500;
+  font-size: 0.6em;
+}

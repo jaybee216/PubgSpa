@@ -1,5 +1,10 @@
 <app-hit-area-selection (onHitAreaSelected)="onHitAreaSelected($event)"></app-hit-area-selection>
 
+<h2>
+  Hit Area: <span *ngIf="hitArea">{{hitArea.name}}</span>
+  <span *ngIf="hitArea" class="subtitle">Damage Modifier: {{hitArea.hitModifier | percent}}</span>
+</h2>
+
 <app-armor-selection (onArmorSelected)="onArmorSelected($event)"
                      (onHelmetSelected)="onHelmetSelected($event)"></app-armor-selection>
 
